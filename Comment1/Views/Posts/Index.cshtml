@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Comment1.Models.Post>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "List of Comments";
 }
 
-<h2>Index</h2>
+    <h2>List of Comments</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,9 +26,6 @@
 @foreach (var item in Model) {
 <tr>
     <td>
-        @Html.DisplayFor(modelItem => item.PostID)
-    </td>
-    <td>
         @Html.DisplayFor(modelItem => item.UserId)
     </td>
     <td>
@@ -42,9 +39,10 @@
         {
             @Html.ActionLink("Edit | ", "Edit", new { id = item.PostID })
             @Html.ActionLink("History | ", "Index", "PostsHistories", new { id = item.PostID }, null)
+            @Html.ActionLink("Delete |", "Delete", new { id = item.PostID })
         }
-        @Html.ActionLink("Details", "Details", new { id = item.PostID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.PostID })
+        @Html.ActionLink("Details", "Details", new { id = item.PostID })
+
     </td>
 </tr>
 }

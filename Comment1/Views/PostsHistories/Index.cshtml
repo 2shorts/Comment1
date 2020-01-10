@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<Comment1.Models.PostsHistory>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Modification History";
 }
 
-<h2>Index</h2>
+<h2>Modification History</h2>
 
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PostID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Message)
+            Old Message
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ChangedDate)
@@ -24,26 +21,20 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HistoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HistoryId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HistoryId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChangedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Back to list", "Index", "Posts", null, null)
